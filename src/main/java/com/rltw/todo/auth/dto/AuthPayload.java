@@ -9,12 +9,12 @@ import javax.validation.constraints.NotEmpty;
 
 @Component
 public class AuthPayload {
-    @NotEmpty
-    @Size(min=3,max=255,message = "Username must be between 3-255 chars.")
+    @NotEmpty(message = "Username is required")
+    @Size(min=3,max=255,message = "Username must be between 3-255 chars")
     private String username;
 
-    @NotEmpty
-    @Size(min=5,max=255,message = "Password must be between 5-255 chars.")
+    @NotEmpty(message="Password is required")
+    @Size(min=5,max=255,message = "Password must be between 5-255 chars")
     private String password;
 
 

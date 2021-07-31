@@ -3,6 +3,8 @@ package com.rltw.todo.todos.service;
 import com.rltw.todo.auth.model.User;
 import com.rltw.todo.todos.model.Todo;
 import com.rltw.todo.todos.repository.TodoRepository;
+import com.rltw.todo.util.exception.EntityNotFoundException;
+import com.rltw.todo.util.exception.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,10 @@ public class TodoService {
     @Autowired
     private TodoRepository todoRepository;
 
-    public Todo getTodo(long id) throws RuntimeException{
+    public Todo getTodo(long id) throws EntityNotFoundException{
         Optional<Todo> optionalTodo =  todoRepository.getTodoById(id);
         if(optionalTodo.isEmpty()){
-            throw new RuntimeException("Todo not found");
+            throw new EntityNotFoundException("Todo");
         }
 
         return optionalTodo.get();
@@ -26,7 +28,7 @@ public class TodoService {
 
     public void authorizeTodo(Todo todo,User user){
         if(user != todo.getUser()){
-            throw new RuntimeException("Unauthorized");
+            throw new UnauthorizedException();
         }
     }
 

@@ -18,8 +18,6 @@ public class TodoController {
 
     @GetMapping()
     List<Todo> getTodos(@AuthenticationPrincipal User user){
-
-        System.out.println(user);
         return todoService.getTodos(user);
     }
 
