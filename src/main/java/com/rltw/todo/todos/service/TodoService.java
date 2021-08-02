@@ -27,7 +27,7 @@ public class TodoService {
     }
 
     public void authorizeTodo(Todo todo,User user){
-        if(user != todo.getUser()){
+        if(!user.equals(todo.getUser())){
             throw new UnauthorizedException();
         }
     }

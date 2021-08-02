@@ -6,4 +6,5 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <include file="migrations/create_users_table.sql" relativeToChangelogFile="true"/>
     <include file="migrations/create_todos_table.sql" relativeToChangelogFile="true"></include>
+    <include file="migrations/create_notes_table.sql" relativeToChangelogFile="true"></include>
 </databaseChangeLog>

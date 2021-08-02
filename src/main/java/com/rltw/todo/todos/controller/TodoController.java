@@ -38,4 +38,11 @@ public class TodoController {
         todoService.authorizeTodo(todo,user);
         return todo;
     }
+
+    @DeleteMapping(path="{id}")
+    String deleteTodo(@AuthenticationPrincipal User user,@PathVariable long id){
+        todoService.deleteTodo(id,user);
+
+        return "Successfully deleted todo.";
+    }
 }

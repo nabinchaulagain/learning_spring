@@ -4,6 +4,7 @@ package com.rltw.todo.auth.model;
 
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity(name="users")
 public class User {
@@ -55,5 +56,14 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+
+        return id == user.id;
     }
 }
